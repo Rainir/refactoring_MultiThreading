@@ -13,7 +13,6 @@ public class Main {
                 Socket socket = server.accept();
                 try {
                     executor.execute(new Server(socket));
-                    //serverList.add(new Server(socket));
                 } catch (IOException e) {
                     socket.close();
                 }

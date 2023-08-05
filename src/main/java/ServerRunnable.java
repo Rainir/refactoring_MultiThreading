@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 public class ServerRunnable extends Thread {
 
@@ -14,7 +13,6 @@ public class ServerRunnable extends Thread {
             while (true) {
                 final var requestLine = in.readLine();
                 final var parts = requestLine.split(" ");
-//                Request request;
                 if (parts.length != 3) {
                     continue;
                 }
@@ -23,10 +21,6 @@ public class ServerRunnable extends Thread {
                 int queryStartIndex = pathWithQuery.indexOf('?');
                 final var path = (queryStartIndex != -1) ? pathWithQuery.substring(0, queryStartIndex) : pathWithQuery;
                 Request request = new Request(path);
-//                (path, pathWithQuery.substring(queryStartIndex + 1, pathWithQuery.length() - 1));
-//                System.out.println(request.getQueryParams());
-//                System.out.println("Login: " + request.getQueryParam("login"));
-//                System.out.println("Password: " + request.getQueryParam("password"));
 
                 if (queryStartIndex != -1) {
                     String queryString = pathWithQuery.substring(queryStartIndex + 1);
